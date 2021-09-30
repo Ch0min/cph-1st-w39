@@ -36,9 +36,6 @@ public class Main {
         System.out.println("\nTaskFour - Less frequent character");
         printLessFrequentLetter();
 
-
-        //test dine metoder ved at kalde dem her:
-
     }
 
     private static void printWordsOfLength(int l) {
@@ -94,17 +91,20 @@ public class Main {
         char[] letters = new char[29];
         int[] amountOfLetters = new int[29];
 
+        // Going through each letter in the alphabet
         int count = 0;
         for (char c = 'a'; c <= 'z'; c++) {
             letters[count] = c;
             count++;
         }
-        // Danish letters
+        // Including the danish letters
         letters[26] = 'æ';
         letters[27] = 'ø';
         letters[28] = 'å';
 
+        // Going through each word and counting the letters
         for (String s : text) {
+            // Setting every letter to lowercase, so it will count all uppercase letters too.
             for (char c : s.toLowerCase().toCharArray()) {
                 for (int j = 0; j < letters.length; j++) {
                     if (c == letters[j]) {
@@ -114,6 +114,7 @@ public class Main {
                 }
             }
         }
+        // Going through the whole text, so it counts the amount of letters of each.
         int indexCount = 0;
         for (int j = 0; j < amountOfLetters.length; j++) {
             if (amountOfLetters[j] > amountOfLetters[indexCount]) {
@@ -132,7 +133,6 @@ public class Main {
             letters[count] = c;
             count++;
         }
-        // Danish letters
         letters[26] = 'æ';
         letters[27] = 'ø';
         letters[28] = 'å';
@@ -148,6 +148,7 @@ public class Main {
             }
         }
         int indexCount = 0;
+                    // Reversing the count, so it will give us the less frequent letter
         for (int j = letters.length - 1; j > 0; j--) {
             if (amountOfLetters[j] > amountOfLetters[indexCount]) {
                 indexCount = j;
@@ -155,6 +156,4 @@ public class Main {
         }
         System.out.println("Less frequent character: " + letters[indexCount] + " : " + amountOfLetters[indexCount] + " times");
     }
-
-
 }
